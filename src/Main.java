@@ -11,7 +11,8 @@ public class Main {
 
     private static Charset USASCII = Charset.forName("UTF-8");
     private static char charAlphabet[] = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
-
+    private static String key = "vrhpaf";
+    private static String pFile = "C:/Users/Gaetan/Documents/Fichiers/PG.txt";
 
     public static void main(String[] args) throws IOException {
         // TODO Auto-generated method stub
@@ -19,18 +20,15 @@ public class Main {
         Crypto crypto = new Crypto();
         Scanner s = new Scanner(System.in);
         String line = "";
-        File file = new File("C:/Users/Gaetan/Documents/Fichiers/PD.txt");
         Charset charset = Charset.forName("Cp1252");
-        String key= "";
         String result= "";
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("C:/Users/Gaetan/Documents/Fichiers/PG.txt"), USASCII))) {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(pFile), USASCII))) {
             do{
                 //if(reader.readLine()!="\n")
                     line += reader.readLine();
                     line += " ";
             }while(reader.readLine()!=null);
 
-            key = "vrhpaf";
 
             result = crypto.decode_operation( line, key.getBytes("US-ASCII"));
             System.out.println(key +"  ----  "+ result);
